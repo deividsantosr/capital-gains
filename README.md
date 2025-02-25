@@ -1,86 +1,73 @@
 
-# Capital Gains CLI App
+# Code Challenge: Capital Gains CLI
 
-Este projeto é uma aplicação simples de **linha de comando (CLI)** criada com **TypeScript**.
+## Descrição
 
-## Pré-requisitos
+Este projeto é uma aplicação de linha de comando (CLI) que calcula impostos sobre ganhos de capital com base nas transações de compra e venda de ações.
 
-- [Node.js](https://nodejs.org/) (Recomendado versão 14 ou superior)
-- [npm](https://www.npmjs.com/) (gerenciador de pacotes do Node.js)
+## Decisões Técnicas e Arquiteturais
 
-Você pode verificar se o Node.js e o npm estão instalados executando os seguintes comandos no terminal:
+- **TypeScript**:
+Devido à sua tipagem, simplicidade e com o objetivo de praticar a linguagem superset do JavaScript.
+O que facilita a manutenção e desenvolvimento do código ao longo do tempo, prevenindo erros comuns que poderiam ocorrer em  JavaScript puro (Vanilla JS).
 
-```sh
-node -v
-npm -v
-```
+- **Arquitetura**: O projeto segue uma arquitetura simples de serviços, onde a classe `CapitalGainsService` é responsável pelo cálculo do imposto com base nas transações. O formato de entrada é um JSON, que é processado para gerar os impostos devidos.
 
-## Como Rodar o Projeto
+## Justificativa para o Uso de Frameworks e Bibliotecas
 
-### 1. Clonar o Repositório
 
-Primeiro, clone o repositório para o seu computador:
+  
+- **class-transformer**:
+A biblioteca `class-transformer` foi utilizada para transformar o JSON em instâncias das classes `Transaction` (de `unit-cost` em snake-case para `unitCost` em lowerCamelCase) e `Tax`, facilitando a manipulação dos dados dentro do código.
 
-```sh
-git https://github.com/deividsantosr/capital-gains.git
-cd capital-gains
-```
+- **jest**:
+Para garantir que a solução estivesse funcionando conforme esperado, foram escritos testes unitários e de integração usando o Jest. O Jest oferece uma configuração simples e poderosa para escrever e executar testes.
 
-### 2. Instalar Dependências
+## Como Compilar e Executar o Projeto
 
-Instale as dependências necessárias para o projeto utilizando o npm:
+## Instalação do Node.js
 
-```sh
-npm install
-```
+Para executar este projeto, você precisa ter o Node.js instalado na sua máquina. Siga as instruções abaixo para instalar:
 
-### 3. Rodar a Aplicação
-
-#### Opção 1: Rodar com `npx ts-node` (sem compilar)
-
-Para rodar o código TypeScript diretamente sem precisar compilar para JavaScript, use o seguinte comando:
-
-```sh
-npx ts-node cli.ts
-```
-
-#### Opção 2: Compilar o TypeScript para JavaScript e Rodar com Node.js
-
-Se preferir compilar o código TypeScript para JavaScript antes de rodar, execute os comandos abaixo:
-
-1. Compile o código TypeScript:
-
+### **Windows, macOS e Linux**
+1. Acesse o site oficial do Node.js: [https://nodejs.org/](https://nodejs.org/)
+2. Você pode verificar se o Node.js e o npm estão instalados executando os seguintes comandos no terminal:
    ```sh
-   npx tsc cli.ts
+   node -v
+   npm -v
+   ```
+1. Acesse a pasta do projeto:
+   ```sh
+   cd capital-gains
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Execute a aplicação:
+   ```bash
+   npm start
    ```
 
-2. Após a compilação, execute o arquivo JavaScript gerado:
+   O programa pedirá que você insira suas transações em formato JSON.
 
-   ```sh
-   node cli.js
+## Como Executar os Testes
+
+1. Para rodar os testes unitários e de integração, use o comando:
+   ```bash
+   npm test
    ```
 
-#### Opção 3: Tornar o Script Executável (Linux/macOS)
+## Notas Adicionais
 
-Se você estiver usando Linux ou macOS, pode tornar o script diretamente executável. Para isso, siga os passos abaixo:
+- **Formato de entrada**: As transações devem ser fornecidas no formato JSON. Cada transação deve conter as propriedades `operation` (sendo a operação "buy" ou "sell"), `unitCost` e `quantity`.
 
-1. Torne o arquivo `cli.ts` executável:
-
-   ```sh
-   chmod +x cli.ts
-   ```
-
-2. Agora, você pode rodar o script diretamente no terminal:
-
-   ```sh
-   ./cli.ts
-
-### Exemplo de Execução
+## Exemplo de Execução
 
 Quando você rodar o script, verá algo assim:
 
 ```sh
-Welcome to my simple CLI app!
-What is your name? John
-Hello, John!
+Please enter your transactions in JSON format. Press Ctrl+D to finish.
+[{"operation":"buy", "unit-cost":10.00, "quantity": 10000},{"operation":"sell", "unit-cost":20.00, "quantity": 5000}]
+[ Tax { tax: 0 }, Tax { tax: 10000 } ]
 ```
