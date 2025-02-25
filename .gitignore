@@ -1,0 +1,29 @@
+# Dependências do Node.js
+node_modules/
+
+# Diretórios de compilação (dist, build)
+dist/
+build/
+
+# Arquivos de configuração do TypeScript
+tsconfig.tsbuildinfo
+
+# Arquivos de logs
+*.log
+
+# Arquivos de cache
+*.cache/
+
+# Arquivos do editor (VSCode, etc.)
+.vscode/
+
+# Arquivos temporários
+*.tmp
+*.swp
+
+# Arquivos gerados por sistemas operacionais
+.DS_Store
+Thumbs.db
+
+# Arquivos de produção
+*.env
