@@ -19,9 +19,7 @@ export class CapitalGainsService {
         transactions.forEach(transaction => {
             const tax = this.getTax(transaction);
             taxes.push(new Tax(tax));
-        })
-
-        console.log(taxes);
+        });
 
         this.clear();
 
