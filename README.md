@@ -1,78 +1,78 @@
 # Code Challenge: Capital Gains CLI
 
-## Descrição
+## Description
 
-Este projeto é uma aplicação de linha de comando (CLI) que calcula impostos sobre ganhos de capital com base nas transações de compra e venda de ações.
+This project is a command-line interface (CLI) application that calculates capital gains taxes based on stock buy and sell transactions.
 
-## Decisões Técnicas e Arquiteturais
+## Technical and Architectural Decisions
 
 - **TypeScript**:
 
-  - Escolhido por sua tipagem estática e segurança, facilitando a manutenção e prevenindo erros comuns que poderiam ocorrer em JavaScript puro.
+  - Chosen for its static typing and safety, making maintenance easier and preventing common errors that could occur in pure JavaScript.
 
-- **Arquitetura**:
+- **Architecture**:
 
-  - O projeto segue uma arquitetura baseada em serviços, com a classe `CapitalGainsService` responsável pelo cálculo do imposto a partir das transações fornecidas.
-  - O formato de entrada é um arquivo JSON, processado para gerar os impostos devidos.
+  - The project follows a service-based architecture, with the `CapitalGainsService` class responsible for calculating taxes based on the provided transactions.
+  - The input format is a JSON file, which is processed to generate the applicable taxes.
 
-## Justificativa para o Uso de Frameworks e Bibliotecas
+## Justification for Using Frameworks and Libraries
 
 - **class-transformer**:
 
-  - Utilizado para converter objetos JSON em instâncias das classes `Transaction` e `Tax`, permitindo melhor manipulação dos dados e conversão de propriedades (exemplo: `unit-cost` para `unitCost`).
+  - Used to convert JSON objects into instances of the `Transaction` and `Tax` classes, allowing for better data manipulation and property conversion (e.g., `unit-cost` to `unitCost`).
 
 - **jest**:
 
-  - Usado para testes unitários e de integração, garantindo confiabilidade no funcionamento da solução.
+  - Used for unit and integration testing to ensure the reliability of the solution.
 
-## Como Compilar e Executar o Projeto
+## How to Compile and Run the Project
 
-### Instalação do Node.js
+### Installing Node.js
 
-Para executar este projeto, é necessário ter o Node.js instalado na sua máquina.
+To run this project, you need to have Node.js installed on your machine.
 
-1. Acesse o site oficial: [https://nodejs.org/](https://nodejs.org/)
-2. Instale a versão recomendada para seu sistema.
-3. Verifique a instalação executando:
+1. Visit the official website: [https://nodejs.org/](https://nodejs.org/)
+2. Install the recommended version for your system.
+3. Verify the installation by running:
    ```sh
    node -v
    npm -v
    ```
 
-### Instalação e Execução do Projeto
+### Installing and Running the Project
 
-1. Clone o repositório e acesse a pasta do projeto:
+1. Clone the repository and navigate to the project folder:
    ```sh
    git clone https://github.com/deividsantosr/capital-gains
    cd capital-gains
    ```
-2. Instale as dependências:
+2. Install dependencies:
    ```sh
    npm install
    ```
-3. Execute a aplicação:
+3. Run the application:
    ```sh
    npm start
    ```
 
-A aplicação solicitará que você insira suas transações em formato JSON.
+The application will prompt you to enter your transactions in JSON format.
 
-## Como Executar os Testes
+## How to Run the Tests
 
-1. Para rodar os testes unitários e de integração, utilize o comando:
+1. To run unit and integration tests, use the following command:
    ```sh
    npm test
    ```
 
-## Notas Adicionais
+## Additional Notes
 
-- **Formato de entrada**:
-  - As transações devem ser fornecidas em JSON.
-  - Cada transação deve conter `operation` ("buy" ou "sell"), `unitCost` e `quantity`.
+- **Input format**:
+  - Transactions must be provided in JSON format.
+  - Each transaction must include `operation` ("buy" or "sell"), `unitCost`, and `quantity`.
 
-## Exemplo de Execução
+## Execution Example
 
-Ao rodar o script, um exemplo de entrada e saída seria:
+When running the script, an example input and output would be:
 
 ```sh
 Please enter your transactions in JSON format. Press Ctrl+D to finish.
